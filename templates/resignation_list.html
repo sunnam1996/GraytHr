@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+{% for data in list %}
+<p>{{data.user}}</p>
+
+
+<a href="{% url 'resignation' pk=data.id %}" ><p>{{data.leaving_reason}}</p></a>
+
+
+{% endfor %}
+
+
+{% endblock %}
+
+
+

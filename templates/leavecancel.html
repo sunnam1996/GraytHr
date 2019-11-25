@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+<form method="POST">
+    {% csrf_token %}
+ <a href="#" class="list-group-item list-group-item-action">{{data.from_date}}</a>
+  <a href="#" class="list-group-item list-group-item-action">{{data.to_date}}</a>
+  <a href="#" class="list-group-item list-group-item-action">Leavetype: {{data.leavetype}}</a>
+    {{data.by}}
+    <input type="text" name="reason">
+    <button value="submit">submit</button>
+
+</form>
+
+{% endblock %}

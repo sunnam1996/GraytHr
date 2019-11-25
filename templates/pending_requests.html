@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class="container">Pending leave applications</h3>
+{% if lists %}
+{% for data in lists%}
+<div class="container">
+<div class="list-group">
+  <a href="#" class="list-group-item active">
+    {{data.reason}}
+  </a>
+  <a href="#" class="list-group-item list-group-item-action">{{data.from_date}}</a>
+  <a href="#" class="list-group-item list-group-item-action">{{data.to_date}}</a>
+  <a href="#" class="list-group-item list-group-item-action">Leavetype: {{data.leavetype}}</a>
+    {{data.by}}
+</div>
+
+  <button class="btn-btn-danger"><a href="{% url 'leave_status' data.id 1 %}">Accept</a> </button>
+    <button class="btn-btn-danger"><a href="{% url 'leave_status' data.id 0 %}">Reject</a> </button>
+</div>
+{% endfor %}
+{% else %}
+no pending requests to show
+{% endif %}
+
+{% endblock %}

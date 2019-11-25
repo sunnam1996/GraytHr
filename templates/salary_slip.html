@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+
+
+    {% block content %}
+
+<!--<style>-->
+<!--* {-->
+<!--  box-sizing: border-box;-->
+<!--}-->
+
+<!--/* Create four equal columns that floats next to each other */-->
+<!--.column {-->
+<!--  float: left;-->
+<!--  width: 25%;-->
+<!--  padding: 10px;-->
+<!--  height: 300px; /* Should be removed. Only for demonstration */-->
+<!--}-->
+
+<!--/* Clear floats after the columns */-->
+<!--.row:after {-->
+<!--  content: "";-->
+<!--  display: table;-->
+<!--  clear: both;-->
+<!--}-->
+<!--</style>-->
+
+
+<!--{% for data in salary %}-->
+
+
+
+<!--<div class="container">-->
+<!--<table id="tblPayslipData" class="table table-bordered table-striped table-info">-->
+<!--		    <tbody><tr class="header">-->
+<!--		<th class="td-33">Earnings</th>-->
+<!--		<th class="right td-17">INR </th>-->
+<!--		<th class="td-33">Deductions</th>-->
+<!--		<th class="right td-17">INR </th>-->
+<!--    </tr>-->
+<!--<tr>-->
+<!--    <td>BASIC</td>-->
+<!--    <td class="right">{{data.basic_pay}}</td>-->
+<!--    <td>PF</td>-->
+<!--    <td class="right">{{data.pf}}</td>-->
+<!--</tr>-->
+
+<!--<tr>-->
+<!--    <td>HRA</td>-->
+<!--    <td class="right">{{data.hra}}</td>-->
+<!--    <td>ESI</td>-->
+<!--    <td class="right">{{data.esi}}</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--    <td>BONUS</td>-->
+<!--    <td class="right">{{data.bonus}}</td>-->
+<!--    <td>&nbsp;</td>-->
+<!--    <td>&nbsp;</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--    <td>SPECIAL ALLOWANCE</td>-->
+<!--    <td class="right">{{data.special_allowance}}</td>-->
+<!--    <td>&nbsp;</td>-->
+<!--    <td>&nbsp;</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--    <td><b>Total Earnings</b></td>-->
+<!--    <td class="right"><b>{{data.cost_to_company}}</b></td>-->
+<!--&lt;!&ndash;                <td><b>Total Deductions</b></td>&ndash;&gt;-->
+<!--&lt;!&ndash;                <td class="right"><b></b></td>&ndash;&gt;-->
+<!--</tr>-->
+<!--</tbody>-->
+<!--</table></div>-->
+<!--{% endfor %}-->
+
+<!--<table class="table table-bordered table-info table-condensed">-->
+<!--    <thead>-->
+<!--    <th>-->
+<!--        asasd-->
+<!--    </th>-->
+<!--    </thead>-->
+
+<!--</table>-->
+
+{% for data in emp %}
+{% for pf_data in pf%}
+<div class="container">
+<table class="table table-bordered table-striped table-info">
+    <thead>
+    <th>Name {{data.full_name}}</th>
+    <th>Employee Id {{data.employee_id}}</th>
+    </thead>
+<tbody>
+<tr>
+<td>Joining date {{data.date_of_joining}}</td>
+<td> UAN Number {{pf_data.uan_number}}</td>
+</tr>
+<tr>
+    <td>PF Account Number {{pf_data.pf_number}}</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+{% endfor %}
+
+{% endfor %}
+
+
+{% for data in salary %}
+
+<div class="container">
+<table class="table table-bordered table-striped table-info">
+    <thead>
+    <th>Salary Components</th>
+    <th>Annual</th>
+    <th>Monthly Income</th>
+    </thead>
+<tbody>
+<tr>
+    <td>basic</td>
+    <td>{{data.basic_pay}}</td>
+    <td>{{data.monthly_basic_pay}}</td>
+
+</tr>
+<tr>
+    <td>hra</td>
+    <td>{{data.hra}}</td>
+    <td>{{data.monthly_hra}}</td>
+
+</tr>
+<tr>
+    <td>bonus</td>
+    <td>{{data.bonus}}</td>
+    <td>{{data.monthly_bonus}}</td>
+</tr>
+<tr>
+    <td>special allowance</td>
+    <td>{{data.special_allowance}}</td>
+    <td>{{data.monthly_special_allowance}}</td>
+</tr>
+<tr>
+    <td>pf</td>
+    <td>{{data.pf}}</td>
+    <td>{{data.monthly_pf}}</td>
+</tr>
+<tr>
+    <td><b>Total Earning</b></td>
+    <td><b>{{data.cost_to_company}}</b></td>
+    <td><b>{{data.monthly_salary}}</b></td>
+</tr>
+
+</tbody>
+</table>
+    </div>
+
+{% endfor %}
+
+
+{% endblock %}
+
+

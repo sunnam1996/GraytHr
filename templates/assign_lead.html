@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+
+<b>assign lead</b>
+    <select>
+        {% for data in lead %}
+        <option>{{data}}</option>
+
+        {% endfor %}
+    </select>
+
+
+
+
+ <b>select employee</b>
+<!--    <select>-->
+<!--        {% for data in obj %}-->
+<!--        <option>{{data}}</option>-->
+
+<!--    {% endfor %}-->
+<!--    </select>-->
+    {% for data in obj %}
+
+    <a href="{% url 'assign-lead' pk=data.id %}" ><button type="button">{{data.id}}</button></a>
+    {% endfor %}
+
+
+
+{% endblock %}
+

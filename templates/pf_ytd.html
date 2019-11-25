@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+{% for data in employee %}
+{% for pf_data in pf %}
+<div class="container">
+<table class="table table-bordered table-striped table-info">
+    <thead>
+    <th>Name {{data.full_name}}</th>
+    <th>Employee Id {{data.employee_id}}</th>
+    </thead>
+<tbody>
+<tr>
+<td>Joining date {{data.date_of_joining}}</td>
+<td> UAN Number {{pf_data.uan_number}}</td>
+</tr>
+<tr>
+    <td>PF Account Number {{pf_data.pf_number}}</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+{% endfor %}
+
+{% endfor %}
+
+
+{% for data in pay %}
+<div class="container">
+<table class="table table-bordered table-striped table-info">
+    <thead>
+
+    <th>month</th>
+<!--    <th>Employee contribution</th>-->
+    <th>Employee contribution</th>
+    </thead>
+<tbody>
+
+<tr>
+    <td>{{data.month}}- {{data.year}}</td>
+    <td>{{data.pf}}</td>
+
+</tr>
+
+</tbody>
+</table>
+    </div>
+
+{% endfor %}
+
+
+
+{% endblock %}

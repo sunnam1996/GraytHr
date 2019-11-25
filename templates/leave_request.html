@@ -1,0 +1,25 @@
+
+<html>
+<h3 class="container">List of leave request</h3>
+<div class="container">
+<div class="list-group">
+  <a href="#" class="list-group-item active">
+    {{lists.by}}
+  </a>
+  <a href="#" class="list-group-item list-group-item-action">{{lists.reason}} </a>
+  <a href="#" class="list-group-item list-group-item-action">{{lists.from_date}}</a>
+  <a href="#" class="list-group-item list-group-item-action">{{lists.to_date}}</a>
+  <a href="#" class="list-group-item list-group-item-action">leavetype: {{lists.leavetype}}</a>
+  {% if lists.status == 1 %}
+        Accepted
+  {% else %}
+        Rejected
+  {% endif %}
+</div>
+
+
+</div>
+
+
+</html>
+

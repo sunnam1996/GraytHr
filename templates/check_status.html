@@ -1,0 +1,48 @@
+
+{% extends "base.html" %}
+
+    {% block content %}
+
+<!--<form method="post">-->
+<!--    {% csrf_token %}-->
+<!--    {{form.as_p}}-->
+<!--    <button type="submit">submit</button>-->
+<!--</form>-->
+
+
+{% for data in emp_list %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <img src="http://placehold.it/380x500" alt="" class="img-rounded img-responsive" />
+                    </div>
+                    <div class="col-sm-6 col-md-8">
+                        <h4>
+                            {{data}}</h4>
+                            <i class="glyphicon glyphicon-envelope"></i>{{data.email}}
+                            <br />
+
+                            <i class="fa fa-mobile" aria-hidden="true"></i>{{ data.mobile}}
+                            <br />
+                        date of joining: <i class="date"></i>{{data.date_of_joining}}</p>
+
+                        <a href="{% url 'change_status' pk=data.id %}" ><button type="button" class="btn btn-success">Accept</button></a>
+                        <button type="button" class="btn btn-danger">Reject</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+
+
+
+
+    {% endblock %}

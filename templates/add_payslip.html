@@ -1,0 +1,74 @@
+
+{% extends "base.html" %}
+
+    {% block content %}
+
+    {%for data in employee%}
+
+    <div class="container">
+
+    <button>{{data.emp_id}}</button>
+        <a href="{% url 'select-employee' pk=data.id %}"><button class="btn btn-success" type="button">submit</button></a>
+<br>
+        </div>
+    {% endfor %}
+
+<style>
+    #sal{
+    }
+
+</style>
+
+<form method="post">
+    {% csrf_token %}
+    {% for data in sal %}
+<div id="sal" class="container">
+<table  class="table table-bordered table-striped table-info">
+    <thead>
+    <tr>
+    <th >Salary Components</th>
+    <th >Monthly Income</th>
+    </tr>
+    </thead>
+<tbody>
+<tr >
+    <td >basic</td>
+    <td >{{data.monthly_basic_pay}}</td>
+</tr>
+<tr >
+    <td >hra</td>
+    <td >{{data.monthly_hra}}</td>
+
+</tr>
+<tr >
+    <td >bonus</td>
+    <td >{{data.monthly_bonus}}</td>
+</tr>
+<tr>
+
+    <td >special allowance</td>
+    <td >{{data.monthly_special_allowance}}</td>
+</tr>
+<tr >
+
+    <td >pf</td>
+    <td >{{data.monthly_pf}}</td>
+</tr>
+<tr >
+
+    <td >esi</td>
+    <td >{{data.monthly_esi}}</td>
+</tr>
+
+</tbody>
+</table>
+        </div>
+    {% endfor %}
+
+    {{form.as_p}}
+    <button type="submit">submit</button>
+
+</form>
+
+
+    {% endblock %}

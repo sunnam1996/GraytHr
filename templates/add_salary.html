@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+    {% block content %}
+
+
+
+
+<form method="post">
+{% csrf_token %}
+    {{form.as_p}}
+<!--    <label>Employee id</label><br>-->
+<!--    {{form.emp_id}}-->
+
+
+<!--    <b>cost to company </b>{{form.cost_to_company}}-->
+    <button type="submit">submit</button>
+</form>
+
+
+    {% endblock %}

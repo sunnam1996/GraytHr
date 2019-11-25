@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+
+    {% block content %}
+
+<!--    <a href="/employee/search"><button>directory</button></a>-->
+<!--    <a href="/leave/leaveapply/"><button class="btn btn-link">apply leave</button></a>-->
+    <a href="/leave/leaveapply/" ><button type="button">LeaveApply</button></a>
+<a href="/leave/leavetrack/"><button class="btn-btn-primary">Pending</button></a>
+<a href="/leave/leavecancel_list/"><button class="btn-btn-primary">LeaveCancel</button></a>
+<a href="/leave/leavehistory/" ><button type="button">LeaveHistory</button></a>
+<a href="/leave/holiday/"><button type="button">HolidayCalendar</button></a>
+<a href="/leave/leave_calendar/" ><button type="button">LeaveCalendar</button></a>
+<a href="/leave/leavebalance/"><button class="btn-btn-primary">LeaveBalance</button></a>
+
+    {% endblock %}

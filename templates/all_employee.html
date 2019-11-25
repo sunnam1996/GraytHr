@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+    {% block content %}
+
+{% for data in obj %}
+
+<div class="container">
+<!--    <div class="row">-->
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+
+
+    <p>{{data.full_name}}</p>
+    <a href="{% url 'bank' pk=data.id  %}" ><button type="button">bank</button></a>
+                        <a href="{% url 'pf' pk=data.id  %}"><button  type="button">pf</button></a>
+                        <a href="{% url 'qualification' pk=data.id  %}"><button type="button">qualification</button></a>
+                    </div>
+                </div>
+<!--                </div>-->
+            </div>
+        </div>
+    </div>
+</div>
+    {% endfor %}
+
+
+{% endblock %}

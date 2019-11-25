@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+
+{%  block content %}
+
+
+{% for data in sal %}
+
+<a href="{% url 'salary-revision' pk=data.id %}"><button>{{data.emp_id}}</button></a>
+
+{% endfor %}
+
+
+{% for data in salary %}
+
+<p>{{data.cost_to_company}}</p>
+
+{% endfor %}
+
+<!--{% for data in percent%}-->
+<!--<input type="text">{{percent}}-->
+<!--{% endfor  %}-->
+<form method="post">
+{% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">submit</button>
+</form>
+
+
+
+
+{% endblock %}

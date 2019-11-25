@@ -1,0 +1,290 @@
+
+{% extends "base.html" %}
+
+    {% block content %}
+
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" href="#qualification">Qualification details <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#bank">bank details</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#career">career info</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#history">history</a>
+            </li>
+          </ul>
+
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <a class="nav-link" href="#pf">pf</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#resignation">resignation</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#family">Family details</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#basic_info">basic info</a>
+            </li>
+          </ul>
+
+<!--          <ul class="nav nav-pills flex-column">-->
+<!--            <li class="nav-item">-->
+<!--              <a class="nav-link" href="#">Nav item again</a>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--              <a class="nav-link" href="#">One more nav</a>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--              <a class="nav-link" href="#">Another nav item</a>-->
+<!--            </li>-->
+<!--          </ul>-->
+        </nav>
+
+        <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+
+
+          <h2>Qualification</h2>
+          <div class="table-responsive">
+            <table  id="qualification" class="table table-striped">
+              <thead>
+                <tr>
+
+                  <th>Qualification</th>
+                  <th>From</th>
+                  <th>To</th>
+                  <th>Institute</th>
+                    <th>Grade</th>
+                  <th>area</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                    {% for data in qualification %}
+                  <td>{{data.qualification}}</td>
+                  <td>{{data.from_date}}</td>
+                  <td>{{data.to_date}}</td>
+                  <td>{{data.institute}}</td>
+                  <td>{{data.grade}}</td>
+                  <td>{{data.qualification_area}}</td>
+                    {% endfor %}
+                </tr>
+
+              </tbody>
+            </table>
+
+          </div>
+        </main>
+
+          <div class="container">
+           <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+
+            <h2>bank details</h2>
+          <div class="jumbotron" id="bank">
+              {% for data in bank %}
+            <div class="container">
+              <b>bank_account_holder_name</b>
+              {{data.bank_account_holder_name}}
+                  <b>bank</b>
+                    {{data.bank_name}}
+              <b>ifsc_code</b>
+                  {{data.ifsc_code}}<br>
+                  <b>account number</b>
+                  {{data.bank_account_number}}
+
+              <b>account</b>
+                    {{data.account_type}}
+               <br> <b>branch name</b>
+                  {{data.branch_name}}
+
+              <b>payment_type</b>
+                    {{data.payment_type}}
+              <br>
+             </div>
+              {% endfor %}
+          </div>
+                  </main>
+          </div>
+
+
+          <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+              <div class="table-responsive">
+             <h2>Career Info</h2>
+            <table  id="career" class="table table-striped">
+              <thead>
+                <tr>
+
+                  <th>location</th>
+                  <th>designation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                    {% for data in career %}
+                  <td>{{data.location}}</td>
+                  <td>{{data.designation}}</td>
+                    {% endfor %}
+                </tr>
+
+              </tbody>
+            </table>
+
+          </div>
+          </main>
+
+
+           <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+                <h2>Previous company history</h2>
+
+              <div class="table-responsive">
+            <table  id="history" class="table table-striped">
+              <thead>
+                <tr>
+                  <th>from_date</th>
+                  <th>to_date</th>
+                  <th>designation</th>
+                  <th>company_name</th>
+                  <th>company_address</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                    {% for data in history %}
+                  <td>{{data.from_date}}</td>
+                  <td>{{data.to_date}}</td>
+                  <td>{{data.designation}}</td>
+                  <td>{{data.company_name}}</td>
+                  <td>{{data.company_address}}</td>
+
+                    {% endfor %}
+                </tr>
+
+              </tbody>
+            </table>
+
+          </div>
+          </main>
+
+    <div class="container">
+           <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+
+            <h2>pf details</h2>
+          <div class="jumbotron" id="pf">
+              {% for data in pf %}
+            <div class="container">
+              <b>pf_join_date</b>
+              {{data.pf_join_date}}
+                  <b>pf_scheme</b>
+                    {{data.pf_scheme}}
+              <b>uan_number</b>
+                  {{data.uan_number}}<br>
+                  <b>pf_number</b>
+                  {{data.pf_number}}
+
+              <b>esi_number</b>
+                    {{data.esi_number}}
+               <br> <b>branch name</b>
+                  {{data.branch_name}}
+
+              <b>family_pf_number</b>
+                    {{data.family_pf_number}}
+              <br>
+             </div>
+              {% endfor %}
+          </div>
+                  </main>
+          </div>
+
+
+              <div class="container">
+           <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+
+            <h2>resignation</h2>
+          <div class="jumbotron" id="resignation">
+              {% for data in resignation %}
+            <div class="container">
+              <b>submitted_on</b>
+              {{data.submitted_on}}
+                  <b>leaving_reason</b>
+                    {{data.leaving_reason}}
+              <b>leaving_date</b>
+                  {{data.leaving_date}}<br>
+                  <b>final_settlement_date</b>
+                  {{data.final_settlement_date}}
+
+              <b>date_of_relieve</b>
+                    {{data.date_of_relieve}}
+               <br> <b>remarks</b>
+                  {{data.remarks}}
+              <br>
+             </div>
+              {% endfor %}
+          </div>
+                  </main>
+          </div>
+
+            <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+                            <h2>Family details</h2>
+              <div class="table-responsive">
+            <table  id="family" class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Relation</th>
+                  <th>DOB</th>
+                  <th>Blood Group</th>
+                  <th>Gender</th>
+                    <th>Nationality</th>
+                    <th>Profession</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                    {% for data in family %}
+                  <td>{{data.name}}</td>
+                  <td>{{data.relation}}</td>
+                  <td>{{data.date_of_birth}}</td>
+                  <td>{{data.blood_group}}</td>
+                  <td>{{data.gender}}</td>
+                    <td>{{data.nationality}}</td>
+                    <td>{{data.profession}}</td>
+                    {% endfor %}
+                </tr>
+
+              </tbody>
+            </table>
+
+          </div>
+          </main>
+
+              <div class="container">
+           <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+               <h2>Basic Info</h2>
+
+          <div class="jumbotron" id="basic_info">
+                {% for data in basic_info %}
+                  <div class="container">
+                      <b>date of birth </b>{{data.date_of_birth}}<br>
+                  <b>mobile </b>{{data.mobile}}<br>
+                    <b>email </b>{{data.email}}<br>
+                      <b>joining date </b>{{data.date_of_joining}}<br>
+                  </div>
+                {% endfor %}
+          </div>
+           </main>
+
+      </div>
+    </div>
+    {% endblock %}
+
+
+

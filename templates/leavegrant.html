@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %}Leave Grant{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+ <h3>Leave Grant</h3>
+</div>
+
+{% if user_history == False %}
+		<h4>No Leave Grant</h4>
+{% else %}
+<table class="table">
+	<thead class="thead-light">
+	<tr>
+        <th>Leave Type</th>
+		<th>From</th>
+        <th>From Session</th>
+		<th>To</th>
+        <th>To Session</th>
+{#        <th>Days</th>#}
+		<th>Reason</th>
+        <th>Attachment</th>
+        <th>Contact</th>
+        <th>ApplyTo</th>
+		{% if super_mng != True %}
+		<th>Status</th>
+		{% endif %}
+	</tr>
+	</thead>
+	<tbody>
+	{% for i in leavegrant %}
+	<tr>
+        <td>{{ i.LeaveType }}</td>
+		<td>{{ i.From }}</td>
+        <td>{{ i.Fromsession}}</td>
+		<td>{{ i.To }}</td>
+        <td>{{ i.Tosession }}</td>
+{#        <td>{{ i.Days }}</td>#}
+		<td>{{ i.Reason }}</td>
+        <td><img src="{{media_url}}{{ i.Attachment }}"></td>
+        <td>{{ i.Contact }}</td>
+        <td>{{ i.ApplyTo }}</td>
+		{% if super_mng != True %}
+		<td>{% if i.Status == None %}
+
+				<form method="POST">{% csrf_token %}
+				<button name="{{ i.id }}"></button></form>
+			{% elif i.Status == True %}
+				Approved
+			{% else %}
+				Rejected
+			{% endif %}</td>
+			{% endif %}
+	</tr>
+	{% endfor %}
+	</tbody>
+</table>
+{% endif %}
+
+ <script type="text/javascript">
+	 $(document).ready(function() { 
+            $("button").click(function() { 
+                $.post("user_history", { 
+                    id: "id", 
+                }, 
+                  
+                function(data,status) { 
+                    document.getElementById("id").innerHTML 
+                            = data;  
+                }); 
+            }); 
+        }); 
+</script>
+
+{% endblock %}

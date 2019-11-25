@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+{% for data in emp %}
+{% for pf_data in pf%}
+<div class="container">
+<table class="table table-bordered table-striped table-info">
+    <thead>
+    <th>Name {{data.full_name}}</th>
+    <th>Employee Id {{data.employee_id}}</th>
+    </thead>
+<tbody>
+<tr>
+<td>Joining date {{data.date_of_joining}}</td>
+<td> UAN Number {{pf_data.uan_number}}</td>
+</tr>
+<tr>
+    <td>PF Account Number {{pf_data.pf_number}}</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+{% endfor %}
+
+{% endfor %}
+
+
+{% for data in pay %}
+<div class="container">
+<table class="table table-bordered table-striped table-info">
+    <thead>
+<h3>{{data.month}}- {{data.year}}</h3>
+
+    <th>Earnings</th>
+    <th>INR</th>
+    <th>Deductions</th>
+    <th>INR</th>
+    </thead>
+<tbody>
+<tr>
+    <td>basic</td>
+    <td>{{data.basic_pay}}</td>
+    <td>PF</td>
+    <td>{{data.pf}}</td>
+
+
+</tr>
+<tr>
+    <td>hra</td>
+    <td>{{data.hra}}</td>
+    <td>ESI</td>
+    <td>{{data.esi}}</td>
+
+
+</tr>
+<tr>
+    <td>bonus</td>
+    <td>{{data.bonus}}</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+
+   </tr>
+<tr>
+    <td>special allowance</td>
+    <td>{{data.special_allowance}}</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+
+</tr>
+<tr>
+    <td>pf</td>
+    <td>{{data.pf}}</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+</tr>
+
+<tr>
+    <td><b>Total Earning</b></td>
+    <td><b>{{data.earning}}</b></td>
+    <td><b>Deduction</b></td>
+    <td><b>{{data.deduction}}</b></td>
+
+</tr>
+
+</tbody>
+</table>
+    <h3>Total Income Rs. {{data.total_income}}</h3>
+    </div>
+
+{% endfor %}
+
+
+
+{% endblock %}

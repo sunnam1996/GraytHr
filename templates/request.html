@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Leave Request{% endblock %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" >
+<link rel="stylesheet" type="text/css" href="{% static 'css/dashboard.css' %}" >
+
+
+{% block content %}
+
+<div class="container-fluid">
+  <div class="row">
+    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+      <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'leave_request' %}">
+              <span data-feather="home"></span>
+              Apply Leave <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file"></span>
+              Leave Grant
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="shopping-cart"></span>
+              Leave Cancel
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Leave Request Form</h1>
+      </div>
+        {% if is_emp_mapped != False or user.emp_type == 'Manager' %}
+	<form name='leaveform' onsubmit="return LeaveRequest()" method='POST'>
+        <div class="form-group">
+		{% csrf_token %}
+            <p>LeaveType:<select name='LeaveType'>
+			<option>Privilege</option>
+			<option>Sick</option>
+			<option>Loss of Pay</option>
+		</select></p>
+		<p>From:<input type="date" name="From"></p>
+             <p>Fromsession:<select name='Fromsession'>
+			<option>Session1</option>
+			<option>Session2</option>
+		</select></p>
+		<p>To:<input type="date" name="To"></p>
+           <p>To Session:<select name='Tosession'>
+			<option>Session2</option>
+			<option>Session1</option>
+		</select></p>
+            <p>Days:<input type='number' name="Days">
+		    <p>Reason:<input type='text' name='Reason'></p>
+            <p>ApplyTo:<select name='ApplyTo'>
+			<option>Manager</option>
+			<option>Hr</option>
+			<option>Admin</option>
+		</select></p>
+            <p>Contact Details:<input type='text' name="Contact">
+            <p>CC To:<input type="text" name="Ccto"</p>
+            <p>Attachment:<input type="file" name="Attachments"</p><br><br>
+		<input type='submit' value="Apply"/>
+		<input type="reset" value="Reset"/>
+    </div>
+	</form>
+	{% else %}
+		<h4>Manager not assigned</h4>
+	{% endif %}
+
+<script>
+function LeaveRequest()
+{
+    var today = new Date();
+    var From = document.forms["leaveform"]["From"];
+    var msec = Date.parse(From.value);
+    var FromDate = new Date(msec);
+    var To = document.forms["leaveform"]["To"];
+    var Reason = document.forms["leaveform"]["Reason"];
+    if (From.value == "" )
+    {
+        alert("Enter a valid date");
+        From.focus();
+        return false;
+    }
+    if (FromDate < today )
+    {
+        window.alert("Enter a valid date");
+        From.focus();
+        return false;
+    }
+    if (To.value == "" )
+    {
+        window.alert("Enter a valid date");
+        To.focus();
+        return false;
+    }
+
+    if (To.value < From.value)
+    {
+        window.alert('Enter a valid date');
+        To.focus();
+        return false;
+    }
+    if (Reason.value == "")
+    {
+        window.alert("Enter a valid reason");
+        Reason.focus();
+        return false;
+    }
+
+    return true;
+}
+</script>
+    </main>
+    </div>
+</div>
+{% endblock %}
